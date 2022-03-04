@@ -39,7 +39,7 @@ deleteAppointment = async (req, res) => {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!movie) {
+        if (!appointment) {
             return res
                 .status(404)
                 .json({ success: false, error: `Appointment not found` })

@@ -24,7 +24,7 @@ const    deleteApp = (event) => {
                 `Do you want to delete the appointment ${props.id} permanently?`,
             )
         ) {
-            api.deleteMovieById(props.id)
+            api.deleteAppointmentById(props.id)
             window.location.reload()
         }
     }

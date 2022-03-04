@@ -32,35 +32,25 @@ const Button = styled.button.attrs({
 const CancelButton = styled.a.attrs({
     className: `btn btn-danger`,
 })`
-    margin: 15px 15px 15px 5px;
-
-
-
-
-
-    `
-
+    margin: 15px 15px 15px 5px;`
 
     function AppointmentsInsert(props) {
-        const [name, setName] = useState('');
-        const [rating, setRating] = useState('');
-        const [time, setTime] = useState('');
-        const handleChangeInputRating = (event )=> {
-            const value = event.target.validity.valid
-                ? event.target.value
-                : rating
-    
-            setRating(value);
-        }
-        const handleAddMovie = async (event) =>{
-            const arrayTime = time.split('/')
-            const payload = { name, rating, time: arrayTime }
-            await api.insertMovie(payload).then(res => {
-                window.alert(`Movie inserted successfully`)
-                setName('');
-                setRating('');
-                setTime('');
-                window.location.href = `/movies/list`;
+        const [cardNumber, setCardNumber] = useState('');
+        const [vaccineSite, setVaccineSite] = useState('');
+        const [priorityArea, setPriorityArea] = useState('');
+        const [dateTime, setDateTime] = useState('');
+        const [cancelled, setCancelled] = useState('');
+        const handleAddAppointment = async (event) =>{
+            const payload = { cardNumber: cardNumber, vaccineSite: vaccineSite, priorityArea: priorityArea, 
+                dateTime: dateTime, cancelled: cancelled}
+            await api.insertAppointment(payload).then(res => {
+                window.alert(`Appointment inserted successfully`)
+                setCardNumber('');
+                setVaccineSite('');
+                setPriorityArea('');
+                setDateTime('');
+                setCancelled('');
+                window.location.href = `/appointment/list`;
                 
             })
 
@@ -72,34 +62,43 @@ const CancelButton = styled.a.attrs({
             <Wrapper>
                 <Title>Create Movie</Title>
 
-                <Label>Name: </Label>
+                <Label>Card Number: </Label>
                 <InputText
                     type="text"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
+                    value={cardNumber}
+                    onChange={e => setCardNumber(e.target.value)}
                 />
 
-                <Label>Rating: </Label>
-                <InputText
-                    type="number"
-                    step="0.1"
-                    lang="en-US"
-                    min="0"
-                    max="10"
-                    pattern="[0-9]+([,\.][0-9]+)?"
-                    value={rating}
-                    onChange={handleChangeInputRating}
-                />
-
-                <Label>Time: </Label>
+                <Label>Vaccine Site: </Label>
                 <InputText
                     type="text"
-                    value={time}
-                    onChange={e => setTime(e.target.value)}
+                    value={vaccineSite}
+                    onChange={e => setVaccineSite(e.target.value)}
                 />
 
-                <Button onClick={handleAddMovie}>Add Movie</Button>
-                <CancelButton href={'/movies/list'}>Cancel</CancelButton>
+                <Label>Priority Area: </Label>
+                <InputText
+                    type="text"
+                    value={priorityArea}
+                    onChange={e => setPriorityArea(e.target.value)}
+                />
+
+                <Label>Date/Time: </Label>
+                <InputText
+                    type="date"
+                    value={dateTime}
+                    onChange={e => setDateTime(e.target.value)}
+                />
+
+                <Label>Cancelled: </Label>
+                <InputText
+                    type="boolean"
+                    value={cancelled}
+                    onChange={e => setCancelled(e.target.value)}
+                />
+
+                <Button onClick={handleAddAppointment}>Add Movie</Button>
+                <CancelButton href={'/appointment/list'}>Cancel</CancelButton>
             </Wrapper>
         );
         }
