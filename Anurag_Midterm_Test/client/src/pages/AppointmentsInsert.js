@@ -3,36 +3,40 @@ import api from '../api'
 
 import styled from 'styled-components'
 
-const Title = styled.h1.attrs({
-    className: 'h1',
-})``
+const Title = styled.h1`
+font-size: 1.5em;
+text-align: center;
+color: blue;
+background: pink
+`;
 
 const Wrapper = styled.div.attrs({
     className: 'form-group',
 })`
-    margin: 0 30px;
+    margin: 10px 30px
+    border: 1px solid
+    background: grey
 `
 
 const Label = styled.label`
     margin: 5px;
+    
 `
 
 const InputText = styled.input.attrs({
     className: 'form-control',
 })`
-    margin: 5px;
+    margin: 10px;
 `
 
-const Button = styled.button.attrs({
-    className: `btn btn-primary`,
-})`
-    margin: 15px 15px 15px 5px;
+const Button = styled.button`
+color: palevioletred;
+font-size: 1em;
+margin: 1em;
+padding: 0.25em 1em;
+border: 2px solid palevioletred;
+border-radius: 3px;
 `
-
-const CancelButton = styled.a.attrs({
-    className: `btn btn-danger`,
-})`
-    margin: 15px 15px 15px 5px;`
 
     function AppointmentsInsert(props) {
         const [cardNumber, setCardNumber] = useState('');
@@ -60,8 +64,7 @@ const CancelButton = styled.a.attrs({
             
         return (
             <Wrapper>
-                <Title>Create Movie</Title>
-
+                <Title>Vaccine Appointment</Title>
                 <Label>Card Number: </Label>
                 <InputText
                     type="text"
@@ -98,7 +101,6 @@ const CancelButton = styled.a.attrs({
                 />
 
                 <Button onClick={handleAddAppointment}>Add Movie</Button>
-                <CancelButton href={'/appointment/list'}>Cancel</CancelButton>
             </Wrapper>
         );
         }
