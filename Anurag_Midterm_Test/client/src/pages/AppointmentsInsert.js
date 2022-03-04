@@ -41,7 +41,7 @@ const CancelButton = styled.a.attrs({
     `
 
 
-    function MoviesInsert(props) {
+    function AppointmentsInsert(props) {
         const [name, setName] = useState('');
         const [rating, setRating] = useState('');
         const [time, setTime] = useState('');
@@ -104,4 +104,4 @@ const CancelButton = styled.a.attrs({
         );
         }
 
-export default MoviesInsert
+export default AppointmentsInsert

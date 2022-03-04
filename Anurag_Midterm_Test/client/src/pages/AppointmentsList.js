@@ -10,44 +10,29 @@ const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
 `
 
-const Update = styled.div`
-    color: #ef9b0f;
-    cursor: pointer;
-`
-
 const Delete = styled.div`
     color: #ff0000;
     cursor: pointer;
 `
-function UpdateMovie(props) {
-   const updateUser = (event) => {
-        event.preventDefault()
-      
-        window.location.href = `/movies/update/${props.id}`
-    }
-    return (<Update onClick={updateUser}>Update</Update>);
 
-
-}
-
-function DeleteMovie(props) {
-const    deleteUser = (event) => {
+function DeleteAppointment(props) {
+const    deleteApp = (event) => {
         event.preventDefault()
 
         if (
             window.confirm(
-                `Do tou want to delete the movie ${props.id} permanently?`,
+                `Do you want to delete the appointment ${props.id} permanently?`,
             )
         ) {
             api.deleteMovieById(props.id)
             window.location.reload()
         }
     }
-    return (<Delete onClick={deleteUser}>Delete</Delete>);
+    return (<Delete onClick={deleteApp}>Delete</Delete>);
 }
 
-function MoviesList(props){
-    const [movies, setMovies] = useState([]);
+function AppointmentsList(props){
+    const [appointments, setAppointments] = useState([]);
   
     const [isLoading, setLoading] = useState(false);
 
@@ -58,8 +43,8 @@ function MoviesList(props){
 
         setLoading(true);
 
-        await api.getAllMovies().then(result => {
-            setMovies(result.data.data);
+        await api.getAllAppointments().then(result => {
+            setAppointments(result.data.data);
             setLoading(false);
 
         }).catch((error) => {
@@ -77,19 +62,29 @@ function MoviesList(props){
             filterable: true,
         },
         {
-            Header: 'Name',
-            accessor: 'name',
+            Header: 'Card Number',
+            accessor: 'cardNumber',
             filterable: true,
         },
         {
-            Header: 'Rating',
-            accessor: 'rating',
+            Header: 'Vaccine Site',
+            accessor: 'vaccineSite',
             filterable: true,
         },
         {
-            Header: 'Time',
-            accessor: 'time',
-            Cell: props => <span>{props.value.join(' / ')}</span>,
+            Header: 'Priority Area',
+            accessor: 'priorityArea',
+            filterable: true,
+        },
+        {
+            Header: 'Date/Time',
+            accessor: 'dateTime',
+            filterable: true,
+        },
+        {
+            Header: 'Cancelled',
+            accessor: 'cancelled',
+            filterable: true,
         },
         {
             Header: '',
@@ -97,18 +92,7 @@ function MoviesList(props){
             Cell: function(props) {
                 return (
                     <span>
-                        <DeleteMovie id={props.original._id} />
-                    </span>
-                )
-            },
-        },
-        {
-            Header: '',
-            accessor: '',
-            Cell: function(props) {
-                return (
-                    <span>
-                        <UpdateMovie id={props.original._id} />
+                        <DeleteAppointment id={props.original._id} />
                     </span>
                 )
             },
@@ -117,7 +101,7 @@ function MoviesList(props){
 
 
     let showTable = true
-    if (!movies.length) {
+    if (!appointments.length) {
         showTable = false
     }
 
@@ -125,7 +109,7 @@ function MoviesList(props){
         <Wrapper>
         {showTable && (
             <ReactTable
-                data={movies}
+                data={appointments}
                 columns={columns}
                 loading={isLoading}
                 defaultPageSize={10}
@@ -138,4 +122,4 @@ function MoviesList(props){
 }
 
 
-export default MoviesList
+export default AppointmentsList
