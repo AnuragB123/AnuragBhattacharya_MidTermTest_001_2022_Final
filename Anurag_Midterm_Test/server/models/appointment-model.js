@@ -1,13 +1,15 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const Movie = new Schema(
+const Appointment = new Schema(
     {
-        name: { type: String, required: true },
-        time: { type: [String], required: true },
-        rating: { type: Number, required: false },
+        cardNumber: { type: String, required: true },
+        vaccineSite: { type: String, required: true },
+        priorityArea: { type: Number, required: true },
+        dateTime: {type: Date, required: true},
+        cancelled: {type: Boolean, required: true}
     },
     { timestamps: true },
 )
 
-module.exports = mongoose.model('movies', Movie)
+module.exports = mongoose.model('appointments', Appointment)
