@@ -1,8 +1,10 @@
+//Imports the Appointment Model
 const Appointment = require('../models/appointment-model')
-
+//Create a new Appointment object
 createAppointment = (req, res) => {
+    //Body of the React Client
     const body = req.body
-
+    //Error Handling
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -10,12 +12,15 @@ createAppointment = (req, res) => {
         })
     }
 
+    //New Appointment Object
     const appointment = new Appointment(body)
 
+    //Error
     if (!appointment) {
         return res.status(400).json({ success: false, error: err })
     }
 
+    //Saving an Appointment Object to the Database
     appointment
         .save()
         .then(() => {
@@ -33,22 +38,23 @@ createAppointment = (req, res) => {
         })
 }
 
+//Deleting Appointment Object
 deleteAppointment = async (req, res) => {
+
     await Appointment.findOneAndDelete({ _id: req.params.id }, (err, appointment) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-
         if (!appointment) {
             return res
                 .status(404)
                 .json({ success: false, error: `Appointment not found` })
         }
-
         return res.status(200).json({ success: true, data: appointment })
     }).catch(err => console.log(err))
 }
 
+//Get All Appointments List
 getAppointments = async (req, res) => {
     await Appointment.find({}, (err, appointments) => {
         if (err) {
@@ -63,6 +69,7 @@ getAppointments = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+//Exporting All Functions
 module.exports = {
     createAppointment,
     deleteAppointment,
