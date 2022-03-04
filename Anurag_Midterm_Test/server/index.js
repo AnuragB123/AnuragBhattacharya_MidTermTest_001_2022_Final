@@ -4,7 +4,9 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const db = require('./db')
 const appointmentRouter = require('./routes/appointment-router')
+//Express
 const app = express()
+//API Port that the Server will run
 const apiPort = 3000
 //Different packages the server application will use
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -14,6 +16,7 @@ app.use(bodyParser.json())
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 //The Server is Running
 app.get('/', (req, res) => {
+    //Server is Running
     res.send('Server is Running')
 })
 //Getting the Appointment

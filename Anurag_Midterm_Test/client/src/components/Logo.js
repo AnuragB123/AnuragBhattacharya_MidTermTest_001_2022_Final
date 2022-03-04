@@ -9,8 +9,9 @@ const Wrapper = styled.a.attrs({
 //Logo Function
 function Logo(props){
     return (
+        //Go to Home Page
         <Wrapper href="localhost:5000">
-            <img src={logo} width="50" height="50" alt="centennialcollege.ca" />
+            <img src={logo} width="50" height="50" alt="homePage" />
         </Wrapper>
     );
 }

@@ -15,7 +15,7 @@ const Delete = styled.div`
 `
 //Delete Appointment Function
 function DeleteAppointment(props) {
-const    deleteApp = (event) => {
+const deleteApp = (event) => {
         event.preventDefault()
         if (
             window.confirm(

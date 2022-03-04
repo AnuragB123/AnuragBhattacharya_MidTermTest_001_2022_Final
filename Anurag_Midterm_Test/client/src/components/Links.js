@@ -15,6 +15,7 @@ const Item = styled.div.attrs({
 //The Links to the Pages
 function Links(props){
     return (
+        //The Links to the different pages
         <React.Fragment>
                 <Link to="/" className="navbar-brand">
                      Vaccine Appointments

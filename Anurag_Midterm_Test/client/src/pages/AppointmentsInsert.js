@@ -86,7 +86,7 @@ function AppointmentsInsert(props) {
                     value={cancelled}
                     onChange={e => setCancelled(e.target.value)}
                 />
-                <Button onClick={handleAddAppointment}>Add Movie</Button>
+                <Button onClick={handleAddAppointment}>Add an Appointment</Button>
                 </Wrapper>
                 );
             }

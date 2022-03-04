@@ -41,6 +41,7 @@ createAppointment = (req, res) => {
 //Deleting Appointment Object
 deleteAppointment = async (req, res) => {
 
+    //Await and Delete A one Appointment Object
     await Appointment.findOneAndDelete({ _id: req.params.id }, (err, appointment) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -56,6 +57,7 @@ deleteAppointment = async (req, res) => {
 
 //Get All Appointments List
 getAppointments = async (req, res) => {
+    //Await and find All Appointments
     await Appointment.find({}, (err, appointments) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
@@ -71,7 +73,10 @@ getAppointments = async (req, res) => {
 
 //Exporting All Functions
 module.exports = {
+    //CreateAppointment function
     createAppointment,
+    //DeleteAppointment function
     deleteAppointment,
+    //GetAppointments function
     getAppointments
 }

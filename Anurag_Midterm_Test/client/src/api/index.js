@@ -12,8 +12,11 @@ export const deleteAppointmentById = id => api.delete(`/appointment/${id}`)
 
 //APIs needed for the React Client
 const apis = {
+    //InsertAppointment API Function
     insertAppointment,
+    //GetAllAppointments API Function
     getAllAppointments,
+    //DeleteAppointment API Function
     deleteAppointmentById,
 }
 //Export All API Functions

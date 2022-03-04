@@ -16,6 +16,7 @@ const Nav = styled.nav.attrs({
 `
 //NavBar Function
 function NavBar(props){
+    //Nav Bar
     return (
         <Container>
             <Nav>

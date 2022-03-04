@@ -10,6 +10,7 @@ import './index.css'
 //Application Switch of the 2 pages of the Application, List Appointments and Create Appointments
 function App() {
     return (
+        //Router, NavBar and Switch Statement to go to the 2 pages of the Application
         <Router>
             <NavBar />
             <Switch>
