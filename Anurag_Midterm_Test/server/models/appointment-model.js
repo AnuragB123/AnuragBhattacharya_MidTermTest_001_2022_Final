@@ -1,6 +1,8 @@
+//Import necessary modules
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+//Appointment Schema
 const Appointment = new Schema(
     {
         cardNumber: { type: String, required: true },
@@ -11,5 +13,5 @@ const Appointment = new Schema(
     },
     { timestamps: true },
 )
-
+//Exporting the Model Schema
 module.exports = mongoose.model('appointments', Appointment)
