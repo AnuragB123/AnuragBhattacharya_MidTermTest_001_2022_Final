@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const db = require('./db')
-const movieRouter = require('./routes/appointment-router')
+const appointmentRouter = require('./routes/appointment-router')
 
 const app = express()
 const apiPort = 3000
@@ -15,9 +15,9 @@ app.use(bodyParser.json())
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Server is Running')
 })
 
-app.use('/api', movieRouter)
+app.use('/api', appointmentRouter)
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
